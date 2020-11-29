@@ -6,6 +6,7 @@ export const UserSchema = new mongoose.Schema({
   phone: { type: String, required: true },
   password: { type: String, required: true },
   role: { type: String, required: false },
+  accessToken: { type: String, required: false },
 })
 
 export interface User extends mongoose.Document {
@@ -15,4 +16,5 @@ export interface User extends mongoose.Document {
   phone: string
   password: string
   role: string
+  accessToken: string
 }

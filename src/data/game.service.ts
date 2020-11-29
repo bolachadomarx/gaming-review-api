@@ -21,7 +21,7 @@ export class GameService {
   }
 
   async update(game: CreateGameDto, _id: string) {
-    const updated = await this.gameModel.updateOne({ _id }, game)
+    const updated = await this.gameModel.findOneAndUpdate({ _id }, game)
     return updated
   }
 

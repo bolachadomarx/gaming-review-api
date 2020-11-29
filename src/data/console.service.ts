@@ -21,7 +21,7 @@ export class ConsoleService {
   }
 
   async update(console: CreateConsoleDto, _id: string) {
-    const updated = await this.consoleModel.updateOne({ _id }, console)
+    const updated = await this.consoleModel.findOneAndUpdate({ _id }, console)
     return updated
   }
 

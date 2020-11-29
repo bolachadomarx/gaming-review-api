@@ -22,7 +22,7 @@ export class ReviewService {
   }
 
   async update(review: CreateReviewDto, _id: string) {
-    const updated = await this.reviewModel.updateOne({ _id }, review)
+    const updated = await this.reviewModel.findOneAndUpdate({ _id }, review)
     return updated
   }
 

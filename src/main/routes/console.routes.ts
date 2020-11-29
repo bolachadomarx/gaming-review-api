@@ -1,10 +1,12 @@
-import { makeGetConsoleController } from '@/main/factory/console/get-console.factory'
-import { makeGetAllConsoleController } from '@/main/factory/console/get-all-console.factory'
-import { makeUpdateConsoleController } from '@/main/factory/console/update-console.factory'
-import { makeCreateConsoleController } from '@/main/factory/console/create-console.factory'
 import { adaptRoute } from './../adapters/express-route-adapter'
 import { Router } from 'express'
-import { makeDeleteConsoleController } from '@/main/factory/console/delete-console.factory'
+import {
+  makeCreateConsoleController,
+  makeUpdateConsoleController,
+  makeGetAllConsoleController,
+  makeGetConsoleController,
+  makeDeleteConsoleController,
+} from '@/main/factory/console/console.factories'
 
 export default (router: Router): void => {
   router.post('/console', adaptRoute(makeCreateConsoleController()))

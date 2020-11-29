@@ -1,3 +1,4 @@
+import 'module-alias/register'
 import express from 'express'
 import setupMiddlewares from '@/main/configs/middlewares'
 import setupRoutes from '@/main/configs/routes'

@@ -1,8 +1,9 @@
+import { Console } from '@/domain/console/console'
 import { CreateConsoleDto } from './../domain/console/console.dto'
 import { Document, Model } from 'mongoose'
 
 export class ConsoleService {
-  constructor(private readonly consoleModel: Model<Document>) {}
+  constructor(private readonly consoleModel: Model<Console>) {}
 
   async create(console: CreateConsoleDto) {
     const createdConsole = await this.consoleModel.create(console)

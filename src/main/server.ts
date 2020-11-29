@@ -12,6 +12,6 @@ setupRoutes(app)
 
 mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
 
-app.listen(3000, () => {
+app.listen(process.env.PORT || 3000, () => {
   console.log('Live on http://localhost:3000')
 })

@@ -10,7 +10,7 @@ const app = express()
 setupMiddlewares(app)
 setupRoutes(app)
 
-mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGO_URL, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false })
 
 app.listen(process.env.PORT || 3000, () => {
   console.log('Live on http://localhost:3000')

@@ -9,7 +9,7 @@ export class AuthenticationService {
     const user = await this.userModel.findOne({ email }).exec()
     if (user && user.password === password) {
       const accessToken = jwt.sign(email, 'IEWRGN038')
-      const loggedUser = await this.userModel.update({ email }, { accessToken })
+      const loggedUser = await this.userModel.findOneAndUpdate({ email }, { accessToken })
       if (loggedUser) {
         return loggedUser
       }

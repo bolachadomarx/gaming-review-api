@@ -25,9 +25,6 @@ export class GetAllGameController implements Controller {
       const definitive = sortedArray.map((item) => {
         return item.game
       })
-
-      console.log(definitive)
-
       return success(definitive)
     } catch (error) {
       return serverError(error)

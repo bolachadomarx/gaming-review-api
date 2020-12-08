@@ -1,6 +1,8 @@
+import { serverError } from '@/presentation/helpers'
 import { Game } from './../domain/game/game'
 import { Model } from 'mongoose'
 import { CreateGameDto } from '@/domain/game/game.dto'
+import { Review } from '@/domain/review/review'
 
 export class GameService {
   constructor(private readonly gameModel: Model<Game>) {}
@@ -21,8 +23,9 @@ export class GameService {
   }
 
   async update(game: CreateGameDto, _id: string) {
-    const updated = await this.gameModel.findOneAndUpdate({ _id }, game)
-    return updated
+    const updated = await this.gameModel.findOneAndUpdate({ _id }, game).exec()
+    const updatedGame = await this.gameModel.findById(updated._id)
+    return updatedGame
   }
 
   async delete(_id: string) {

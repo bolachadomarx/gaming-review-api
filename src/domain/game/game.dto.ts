@@ -1,4 +1,5 @@
 import { IsEmpty, IsString } from 'class-validator'
+import { Review } from '../review/review'
 
 export class CreateGameDto {
   @IsEmpty()
@@ -28,4 +29,6 @@ export class CreateGameDto {
   @IsEmpty()
   @IsString()
   genre: string
+
+  reviews: Review[]
 }

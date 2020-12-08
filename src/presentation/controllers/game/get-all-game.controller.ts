@@ -3,6 +3,7 @@ import { success } from '../../helpers/http-helper'
 import { serverError } from '../../helpers'
 import { HttpRequest, HttpResponse } from '../../protocols'
 import { GameService } from '@/data/game.service'
+import R from 'ramda'
 
 export class GetAllGameController implements Controller {
   constructor(private readonly gameService: GameService) {}
@@ -12,7 +13,22 @@ export class GetAllGameController implements Controller {
       const queryParams = httpRequest.query
       const games = await this.gameService.list(queryParams)
 
-      return success(games)
+      const filteredGames = games.map((game) => {
+        let ratingSum = 0
+        game.reviews.forEach((review) => {
+          ratingSum = review.rating + ratingSum
+        })
+        return { game, ratingSum }
+      })
+      const sortedArray = R.reverse(R.sortBy(R.prop('ratingSum'), filteredGames))
+
+      const definitive = sortedArray.map((item) => {
+        return item.game
+      })
+
+      console.log(definitive)
+
+      return success(definitive)
     } catch (error) {
       return serverError(error)
     }

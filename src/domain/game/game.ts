@@ -1,3 +1,4 @@
+import { Review, ReviewSchema } from '@/domain/review/review'
 import * as mongoose from 'mongoose'
 
 export const GameSchema = new mongoose.Schema({
@@ -7,6 +8,7 @@ export const GameSchema = new mongoose.Schema({
   description: { type: String, required: true },
   developer: { type: String, required: true },
   genre: { type: String, required: true },
+  reviews: [ReviewSchema],
 })
 
 export interface Game extends mongoose.Document {
@@ -17,4 +19,5 @@ export interface Game extends mongoose.Document {
   description: string
   developer: string
   genre: string
+  reviews: Review[]
 }

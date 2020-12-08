@@ -15,8 +15,8 @@ export class GameService {
     return game
   }
 
-  async list() {
-    const games = await this.gameModel.find()
+  async list(queryParams) {
+    const games = await this.gameModel.find(queryParams)
     return games
   }
 

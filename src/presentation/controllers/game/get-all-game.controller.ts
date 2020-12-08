@@ -9,7 +9,8 @@ export class GetAllGameController implements Controller {
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
-      const games = await this.gameService.list()
+      const queryParams = httpRequest.query
+      const games = await this.gameService.list(queryParams)
 
       return success(games)
     } catch (error) {

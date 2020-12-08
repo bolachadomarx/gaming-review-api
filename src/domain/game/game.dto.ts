@@ -7,6 +7,10 @@ export class CreateGameDto {
 
   @IsEmpty()
   @IsString()
+  image: string
+
+  @IsEmpty()
+  @IsString()
   idConsole: string
 
   @IsEmpty()

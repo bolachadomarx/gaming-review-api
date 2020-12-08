@@ -16,8 +16,8 @@ export class ReviewService {
     return review
   }
 
-  async list() {
-    const reviews = await this.reviewModel.find()
+  async list(queryParams) {
+    const reviews = await this.reviewModel.find(queryParams)
     return reviews
   }
 

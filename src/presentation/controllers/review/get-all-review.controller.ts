@@ -9,7 +9,8 @@ export class GetAllReviewController implements Controller {
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
-      const reviews = await this.reviewService.list()
+      const queryParams = httpRequest.query
+      const reviews = await this.reviewService.list(queryParams)
 
       return success(reviews)
     } catch (error) {

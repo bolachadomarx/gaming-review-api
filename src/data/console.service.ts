@@ -15,8 +15,8 @@ export class ConsoleService {
     return console
   }
 
-  async list() {
-    const consoles = await this.consoleModel.find()
+  async list(queryParams) {
+    const consoles = await this.consoleModel.find(queryParams)
     return consoles
   }
 

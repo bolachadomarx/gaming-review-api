@@ -9,7 +9,8 @@ export class GetAllConsoleController implements Controller {
 
   async handle(httpRequest: HttpRequest): Promise<HttpResponse> {
     try {
-      const consoles = await this.consoleService.list()
+      const queryParams = httpRequest.query
+      const consoles = await this.consoleService.list(queryParams)
 
       return success(consoles)
     } catch (error) {
